@@ -6,7 +6,7 @@ import { ResizeObserverDetail } from '../ResizeObserverDetail';
  * 
  * https://drafts.csswg.org/resize-observer-1/#has-active-observations-h
  */
-const hasActiveObservations = (): boolean => {
+let hasActiveObservations = (): boolean => {
   return resizeObservers.some((ro: ResizeObserverDetail): boolean => ro.activeTargets.length > 0);
 }
 

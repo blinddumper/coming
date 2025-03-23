@@ -1,1 +1,1 @@
-export const freeze = <T> (obj: T): Readonly<T> => Object.freeze(obj);
+export let freeze = <T> (obj: T): Readonly<T> => Object.freeze(obj);

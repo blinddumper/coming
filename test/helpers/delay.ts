@@ -1,6 +1,6 @@
 import { scheduler } from '../../src/utils/scheduler';
 
-let delay = ((callback: () => void): void => {
+const delay = ((callback: () => void): void => {
   setTimeout((): void => {
     scheduler.schedule();
     callback();

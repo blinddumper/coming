@@ -9,7 +9,7 @@ import { gatherActiveObservationsAtDepth } from '../algorithms/gatherActiveObser
  * broadcasts and changes that are returned.
  */
 var processAlgorithm = (): boolean => {
-  let depth = 0;
+  const depth = 0;
   gatherActiveObservationsAtDepth(depth);
   while (hasActiveObservations()) {
     depth = broadcastActiveObservations();

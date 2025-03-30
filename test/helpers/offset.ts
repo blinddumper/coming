@@ -1,10 +1,10 @@
 // This file patches offsetWidth and offsetHeight
 // as it's not supported in jsdom.
 
-let getOffsetValue = function (el: Element): number {
-  let style = getComputedStyle(el);
-  let width = parseFloat(style.width || '');
-  let height = parseFloat(style.height || '');
+const getOffsetValue = function (el: Element): number {
+  const style = getComputedStyle(el);
+  const width = parseFloat(style.width || '');
+  const height = parseFloat(style.height || '');
   if(style.display === 'none' || (!width && !height)) {
     return 0;
   }

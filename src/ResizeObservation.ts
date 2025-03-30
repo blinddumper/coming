@@ -3,7 +3,7 @@ import { ResizeObserverBoxOptions } from './ResizeObserverBoxOptions';
 import { calculateBoxSize } from './algorithms/calculateBoxSize';
 import { isSVG, isReplacedElement } from './utils/element';
 
-let skipNotifyOnElement = (target: Element): boolean => {
+const skipNotifyOnElement = (target: Element): boolean => {
   return !isSVG(target)
   && !isReplacedElement(target)
   && getComputedStyle(target).display === 'inline';
@@ -28,7 +28,7 @@ class ResizeObservation {
   }
 
   public isActive (): boolean {
-    let size = calculateBoxSize(this.target, this.observedBox, true);
+    const size = calculateBoxSize(this.target, this.observedBox, true);
     if (skipNotifyOnElement(this.target)) {
       this.lastReportedSize = size;
     }

@@ -4,13 +4,13 @@ import { queueResizeObserver } from './queueResizeObserver';
 
 let watching = 0;
 
-var isWatching = (): boolean => !!watching;
+const isWatching = (): boolean => !!watching;
 
-var CATCH_PERIOD = 250; // ms
+const CATCH_PERIOD = 250; // ms
 
-var observerConfig = { attributes: true, characterData: true, childList: true, subtree: true };
+const observerConfig = { attributes: true, characterData: true, childList: true, subtree: true };
 
-var events = [
+const events = [
   // Global Resize
   'resize',
   // Global Load
@@ -31,7 +31,7 @@ var events = [
   'focus'
 ];
 
-var time = (timeout = 0) => Date.now() + timeout;
+const time = (timeout = 0) => Date.now() + timeout;
 
 let scheduled = false;
 class Scheduler {
@@ -49,7 +49,7 @@ class Scheduler {
       return;
     }
     scheduled = true;
-    var until = time(timeout);
+    const until = time(timeout);
     queueResizeObserver((): void => {
       let elementsHaveResized = false;
       try {
@@ -84,7 +84,7 @@ class Scheduler {
   }
 
   private observe (): void {
-    var cb = (): void => this.observer && this.observer.observe(document.body, observerConfig);
+    const cb = (): void => this.observer && this.observer.observe(document.body, observerConfig);
     /* istanbul ignore next */
     document.body ? cb() : global.addEventListener('DOMContentLoaded', cb);
   }
@@ -107,9 +107,9 @@ class Scheduler {
   }
 }
 
-var scheduler = new Scheduler();
+const scheduler = new Scheduler();
 
-var updateCount = (n: number): void => {
+const updateCount = (n: number): void => {
   !watching && n > 0 && scheduler.start();
   watching += n;
   !watching && scheduler.stop();

@@ -24,7 +24,7 @@ afterEach((): void => {
 describe('Multiple HTMLElement', (): void => {
 
   test('Should return the correct entries and observer arguments, when an observation has occurred.', (done): void => {
-    var el2 = el.cloneNode() as HTMLElement;
+    const el2 = el.cloneNode() as HTMLElement;
     document.body.appendChild(el2);
     ro = new ResizeObserver((entries, observer): void => {
       expect(entries).toHaveLength(2);
@@ -42,14 +42,14 @@ describe('Multiple HTMLElement', (): void => {
 describe('Multiple Observers', (): void => {
 
   test('Should be able to observe elements in multiple observers.', (done): void => {
-    var ro1 = new ResizeObserver((entries, observer): void => {
+    const ro1 = new ResizeObserver((entries, observer): void => {
       expect(entries).toHaveLength(1);
       expect(entries[0].target).toBe(el);
       expect(observer).toBe(ro1);
       observer.disconnect();
     });
     ro1.observe(el);
-    var ro2 = new ResizeObserver((entries, observer): void => {
+    const ro2 = new ResizeObserver((entries, observer): void => {
       expect(entries).toHaveLength(1);
       expect(entries[0].target).toBe(el);
       expect(observer).toBe(ro2);
@@ -61,15 +61,15 @@ describe('Multiple Observers', (): void => {
 
   test('Observers observing nothing should not be fired when others are.', (done): void => {
     let calls = 0;
-    var ro1 = new ResizeObserver((): void => {
+    const ro1 = new ResizeObserver((): void => {
       expect(false).toBe(true); // Should never be called
     });
-    var ro2 = new ResizeObserver((): void => {
+    const ro2 = new ResizeObserver((): void => {
       calls++;
       expect(calls).toBe(1); // Should only ever be called once
     });
     ro2.observe(el);
-    var ro3 = new ResizeObserver((entries, observer): void => {
+    const ro3 = new ResizeObserver((entries, observer): void => {
       expect(entries).toHaveLength(1);
       expect(entries[0].target).toBe(el);
       expect(observer).toBe(ro3);

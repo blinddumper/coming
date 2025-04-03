@@ -1,5 +1,5 @@
 import { ResizeObserverDetail } from '../ResizeObserverDetail';
 
-let resizeObservers: ResizeObserverDetail[] = [];
+const resizeObservers: ResizeObserverDetail[] = [];
 
 export { resizeObservers };
